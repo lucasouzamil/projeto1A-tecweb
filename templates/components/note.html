@@ -1,0 +1,18 @@
+<div class="card">
+    <div class='cabecalho'>
+      <h3 class="card-title">{title}</h3>
+      <div class='buttons-position'>
+        <form action="sua_url_aqui" method="post">
+          <button class="edit-button" name="edita"  type="submit">Edit</button>
+        </form>
+        <p>|</p>
+        <form method="post">
+          <input type="hidden" <input type="hidden" name="id" value="{identificador}">
+          <button class="delete-button" type="submit">X</button>
+        </form>
+      </div>
+    </div>
+    <div class="card-content">
+      <p>{details}</p>
+    </div>
+  </div>
