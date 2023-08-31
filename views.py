@@ -51,3 +51,33 @@ def index(request):
 
     t =  load_template('index.html').format(notes=notes)
     return build_response(body=t)
+
+def edit(request):
+
+    request = request.replace('\r', '') 
+    partes = request.split('\n\n')
+    corpo = partes[1]
+    name = corpo.split('=')[0]
+
+    db = database.Database('LISTA')
+    if request.startswith('POST'):
+        print('POSTOOOOU')
+        print(name)
+        if name == 'id':
+            print('ENTROOOU')
+            id = int(corpo.split('=')[1].split('%')[0])
+            titulo = corpo.split('titulo=')[1].split('&')[0]
+            descricao = corpo.split('titulo=')[1].split('detalhes=')[1]
+            note = database.Note(id=id,title=titulo,content=descricao)
+            db.update(note)
+
+        return build_response(code=303, reason='See Other', headers='Location: /')
+
+    
+    id = partes[0].split('=')[1]
+    id = int(id.split(' ')[0])
+    note = db.returncard(id)
+    edit_card_template = load_template('components/edit-card.html').format(identificador=note.id,title=note.title,details=note.content)
+
+    t =  load_template('edit.html').format(editcard=edit_card_template)
+    return build_response(body=t)

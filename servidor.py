@@ -1,7 +1,7 @@
 import socket
 from pathlib import Path
 from utils import extract_route, read_file, build_response
-from views import index
+from views import index, edit
 from database import database
 
 CUR_DIR = Path(__file__).parent
@@ -26,11 +26,17 @@ while True:
 
     route = extract_route(request)
 
+    print('OLHA A ROTA\n\n')
+    print(route)
+    print('')
+
     filepath = CUR_DIR / route
     if filepath.is_file():
         response = build_response() + read_file(filepath)
     elif route == '':
         response = index(request)
+    elif route.split('=')[0] == '?edit':
+        response = edit(request)
     else:
         response = build_response()
 

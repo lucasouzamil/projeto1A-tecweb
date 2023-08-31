@@ -19,12 +19,20 @@ class Database():
         return lista
     
     def update(self, entry) -> None:
+        print(entry)
         self.conn.execute("UPDATE note SET title = ?, content = ?  WHERE id = ?", (entry.title, entry.content, entry.id))
         self.conn.commit()
 
     def delete(self,note_id) -> None:
         self.conn.execute(f"DELETE FROM note WHERE id = {note_id}")
         self.conn.commit()
+
+    def returncard(self,id):
+        notes = self.get_all()
+        for note in notes:
+            if note.id == id:
+                return note
+
 
 class Note():
     def __init__(self, id=None, title=None, content='') -> None:
