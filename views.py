@@ -1,6 +1,7 @@
 from utils import load_db, load_template
 import urllib
 from utils import add_in_db, build_response
+from urllib.parse import unquote
 from database import database
 
 def index(request):
@@ -8,18 +9,10 @@ def index(request):
     db = database.Database('LISTA')
     # A string de request sempre começa com o tipo da requisição (ex: GET, POST)
     if request.startswith('POST'):
-
-        print("\n\n\n OLHA O REQUEST \n\n\n")
-        print(request)
-        print("\n\n\n\n\n")
         request = request.replace('\r', '')  # Remove caracteres indesejados
         # Cabeçalho e corpo estão sempre separados por duas quebras de linha
         partes = request.split('\n\n')
-
         corpo = partes[1]
-        print("\n\n\n\n\n")
-        print(corpo)
-        print("\n\n\n\n\n")
         # Preencha o dicionário params com as informações do corpo da requisição
         # O dicionário conterá dois valores, o título e a descrição.
         # Posteriormente pode ser interessante criar uma função que recebe a
@@ -67,7 +60,10 @@ def edit(request):
             print('ENTROOOU')
             id = int(corpo.split('=')[1].split('%')[0])
             titulo = corpo.split('titulo=')[1].split('&')[0]
+            titulo = unquote(titulo.replace("+", " "))
             descricao = corpo.split('titulo=')[1].split('detalhes=')[1]
+            descricao = unquote(descricao.replace("+", " "))
+
             note = database.Note(id=id,title=titulo,content=descricao)
             db.update(note)
 
