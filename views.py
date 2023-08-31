@@ -15,9 +15,6 @@ def index(request):
         request = request.replace('\r', '')  # Remove caracteres indesejados
         # Cabeçalho e corpo estão sempre separados por duas quebras de linha
         partes = request.split('\n\n')
-        print("\n\n\n\n\n")
-        print(partes)
-        print("\n\n\n\n\n")
 
         corpo = partes[1]
         print("\n\n\n\n\n")
@@ -38,8 +35,6 @@ def index(request):
             add_in_db(params)
         elif name == 'id':
             id = int(corpo.split('=')[1])
-            print('\n FUNCIONOU \n')
-            print(id)
             db.delete(id)
 
         return build_response(code=303, reason='See Other', headers='Location: /')
@@ -48,19 +43,10 @@ def index(request):
     # Cria uma lista de <li>'s para cada anotação
     # Se tiver curiosidade: https://docs.python.org/3/tutorial/datastructures.html#list-comprehensions
     note_template = load_template('components/note.html')
-
-
-    """ notes_li = [
-        note_template.format(title=dados['titulo'], details=dados['detalhes'])
-        for dados in load_data('notes.json')
-    ] """
-
     notes_li = [
         note_template.format(identificador=note.id,title=note.title, details=note.content)
         for note in load_db()
     ]
-
-
     notes = '\n'.join(notes_li)
 
     t =  load_template('index.html').format(notes=notes)

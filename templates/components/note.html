@@ -2,12 +2,13 @@
     <div class='cabecalho'>
       <h3 class="card-title">{title}</h3>
       <div class='buttons-position'>
-        <form action="sua_url_aqui" method="post">
-          <button class="edit-button" name="edita"  type="submit">Edit</button>
+        <form method="get">
+          <input type="hidden" type="hidden" name="edita" value="{identificador}">
+          <button class="edit-button"type="submit">Edit</button>
         </form>
         <p>|</p>
         <form method="post">
-          <input type="hidden" <input type="hidden" name="id" value="{identificador}">
+          <input type="hidden" type="hidden" name="id" value="{identificador}">
           <button class="delete-button" type="submit">X</button>
         </form>
       </div>
