@@ -20,7 +20,7 @@ def load_db():
 
 def load_template(file):
     caminho = Path() / 'templates' / file
-    with open(caminho, 'r') as arquivo:
+    with open(caminho, 'r', encoding='utf-8') as arquivo:
         conteudo = arquivo.read()
     return conteudo
 
