@@ -1,7 +1,7 @@
 import socket
 from pathlib import Path
 from utils import extract_route, read_file, build_response
-from views import index, edit
+from views import index, edit,err
 from database import database
 
 CUR_DIR = Path(__file__).parent
@@ -38,7 +38,7 @@ while True:
     elif route.split('=')[0] == '?edit':
         response = edit(request)
     else:
-        response = build_response()
+        response = err()
 
     client_connection.sendall(response)
 

@@ -77,3 +77,7 @@ def edit(request):
 
     t =  load_template('edit.html').format(editcard=edit_card_template)
     return build_response(body=t)
+
+def err():
+    t =  load_template('erro.html')
+    return build_response(body=t)
