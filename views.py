@@ -73,6 +73,7 @@ def edit(request):
     id = partes[0].split('=')[1]
     id = int(id.split(' ')[0])
     note = db.returncard(id)
+    
     edit_card_template = load_template('components/edit-card.html').format(identificador=note.id,title=note.title,details=note.content)
 
     t =  load_template('edit.html').format(editcard=edit_card_template)
