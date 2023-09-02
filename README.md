@@ -4,6 +4,8 @@
 
 Este é um projeto desenvolvido por Lucas Lima como parte da disciplina de Tecnologias Web do quarto semestre do curso de Engenharia de Computação no Insper em São Paulo (SP). A aplicação é um campo de post-it digital que permite aos usuários adicionar, remover e editar post-its usando requisições HTTP. O servidor é executado localmente e os dados são armazenados em um banco de dados criado pela aplicação.
 
+![Tela principal da aplicação](templates/img/telainicial.png)
+
 ## Funcionalidades
 
 A aplicação possui as seguintes funcionalidades:
@@ -35,7 +37,7 @@ Para executar a aplicação, siga os seguintes passos:
    ```bash
    python servidor.py
 
-5. Abra qualquer navegador web e acesse o seguinte URL:
+5. Abra qualquer navegador web e acesse o seguinte URL utilizando uma guia anônima:
 
    ```bash
    http://localhost:8080/
