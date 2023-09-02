@@ -44,7 +44,7 @@ Para executar a aplicação, siga os seguintes passos:
 
 ## Tecnologias Utilizadas
 * Python: A aplicação é desenvolvida em Python.
-* Banco de Dados: A aplicação cria um banco de dados para armazenar os post-its.
+* Banco de Dados (SQL): A aplicação utilzia SQL para criar e manipular os conteúdos dos post-it's.
 * HTTP: As operações de adição, remoção e edição de post-its são realizadas por meio de requisições HTTP.
 
 ## Autor
@@ -53,8 +53,3 @@ Para executar a aplicação, siga os seguintes passos:
 
 ## Licença
 Este projeto está sob a Licença MIT. Você é livre para modificar e distribuir o código de acordo com os termos desta licença.
-
-___
-
-Sinta-se à vontade para adicionar qualquer outra informação relevante ao seu README e personalizá-lo de acordo com as necessidades do seu projeto. Isso deve fornecer um guia claro para outros desenvolvedores que desejam executar e entender sua aplicação.
-
